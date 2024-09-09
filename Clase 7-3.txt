@@ -1,0 +1,18 @@
+
+
+
+
+1D - Vector 
+2D - Matriz
+3d - Tensor
+
+
+
+Numpy package 
+	- NumPy es el paquete fundamentalmente para la computacion cientifica en python, 
+	que proporciona un array multidimensional. 
+
+	- Por otro lado, realiza operaciones rapidas con matrices, incluidas operaciones 
+	matematicas, logicas, manipulacion de formas, ordenacion, seleccion, E/S, 
+	FFT(Fast Fourier Transform), algebra lineal basica, operaciones estadisticas, 
+	simulacion aleatoria y mucho mas. 
