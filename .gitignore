@@ -1,0 +1,3 @@
+## Ignorar los archivos en la carpeta Pyenv-BigData
+Pyenv-BigData/*
+
