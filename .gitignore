@@ -1,3 +1,7 @@
-## Ignorar los archivos en la carpeta Pyenv-BigData
-Pyenv-BigData/*
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
 
+## Ignorar los archivos en la carpeta Pyenv-BigData
+Taller_Python/*

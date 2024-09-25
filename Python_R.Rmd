@@ -1,0 +1,84 @@
+```{r instalación del entorno en Python}
+### 
+#install.packages("reticulate")
+## En el siguiente link se encuentra una pequeña documentación visual de como funciona reticulate y como lo puedes utilizar en ambas extensiones de R (.R, Rmd)
+## https://raw.githubusercontent.com/rstudio/cheatsheets/main/translations/spanish/reticulate_es.pdf
+ 
+library(reticulate)
+### Descarga de python en caso de no tenerla activa
+#install_python(
+ # version = "3.10.12", 
+ # optimized = T)
+
+# Nombre del entorno 
+env_path <- "Conexion_Python_R"
+#Creación del entorno
+virtualenv_create(envname = env_path)
+
+# Activando el entorno
+use_virtualenv(env_path)
+```
+
+```{r}
+# instalar la libreria seaborn en el entorno 
+
+py_install("numpy", envname = env_path)
+py_install("pandas", envname = env_path)
+py_install("matplotlib", envname = env_path)
+py_install("seaborn", envname = env_path)
+```
+
+```{python}
+## Importa las librerias que se utilizan en python
+import numpy as np
+import pandas as pd
+import matplotlib as plt
+import seaborn as sns 
+```
+
+```{python}
+## Recolección de un dataframe 
+crashes =sns.load_dataset("car_crashes", index_col = "abbrev") [["alcohol", "total"]]
+crashes.head()
+```
+
+```{r}
+# Desde R recolecta el dataset "car_crashes", utilizando el comando py$
+# Importante: ESte comando te permite recolectar todo tipo de frgamentos creados en python, para 
+# utilizarlos en el formato más optimo en R (Mantiene la conversión de datos utilizada en python)
+
+# Importante: Siempre revisar la documentación de los dataframes, BD y librerias. 
+
+crash_alcohol <- subset(py$crashes, alcohol >= 2)
+head(py$crashes)
+
+install.packages("ggplo2")
+
+head(iris)
+
+```
+
+```{python}
+## En esta celda, se genera una gráfica sencilla para mostrar que se pueden recolectar los datos de R a python y ser procesado en el mismo.
+## Importante: Para recolectar datos de R, siempre se debe de utilizar el comando r."nombre_del_dataframe". 
+sns.scatterplot(x = "alcohol",y = "total", data = r.crash_alcohol)
+plt.pyplot.show()
+
+```
+
+```{python}
+### Esto todavio no lo hago jalar
+iris = r.iris
+iris.head()
+x1 = iris[1]
+x1.head()
+
+fig, ax =plt.subplots()
+
+ax.hist(x, bins=8, linewidth=0.5, edgecolor="")
+
+ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+       ylim=(0, 56), yticks=np.linspace(0, 56, 9))
+
+
+```
